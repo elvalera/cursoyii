@@ -15,9 +15,30 @@
 
 	<?php echo $form->passwordFieldGroup($model,'password',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5','maxlength'=>256)))); ?>
 
-	<?php echo $form->textFieldGroup($model,'fk_idioma',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5')))); ?>
-
-	<?php echo $form->textFieldGroup($model,'fk_pais',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5')))); ?>
+<?php echo $form->dropDownListGroup( $model,'fk_idioma',
+array( 'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
+'widgetOptions' => array(
+'data' => CHtml::listData(Idioma::model()->findAll(), 'id_idioma', 'idioma'),
+'htmlOptions' => array('empty'=> 'Seleccione su idioma', 
+//'style'=>'border:1px solid red;'
+),
+) ) ); ?>
+<?php
+echo $form->dropDownListGroup($model, 'fk_pais', array('wrapperHtmlOptions' =>
+array('class' => 'col-sm-5',),
+'widgetOptions' => array(
+'data' => CHtml::listData(Pais::model()->findAll(array(
+	'order' => 'pais')), 'id_pais', 'pais'),
+	'htmlOptions' => array('empty' => 'Seleccione su País'),
+)));
+?>
+<?php echo $form->dropDownListGroup( $model,'fk_pregunta_secreta',
+array( 'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
+'widgetOptions' => array(
+'data' => CHtml::listData(Idioma::model()->findAll(), 'id_pregunta_secreta', 'pregunta_secreta'),
+'htmlOptions' => array('empty'=> 'Seleccione la Pregunta secreta', 
+),
+) ) ); ?>
 
 	<?php echo $form->textFieldGroup($model,'fk_pregunta_secreta',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5')))); ?>
 
