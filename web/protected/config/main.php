@@ -10,7 +10,7 @@ return array(
 	'name'=>'My Web Application',
 
 	// preloading 'log' component
-	'preload'=>array('log'),
+	'preload'=>array('log','yiibooster'),//para cargar el componete yiibooster
 
 	// autoloading model and component classes
 	'import'=>array(
@@ -22,6 +22,7 @@ return array(
 		// uncomment the following to enable the Gii tool
 		
 		'gii'=>array(
+			'generatorPaths' => array('booster.gii'),//para cargar el componete yiibooster
 			'class'=>'system.gii.GiiModule',
 			'password'=>'123456',
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
@@ -33,11 +34,15 @@ return array(
 	// application components
 	'components'=>array(
 
+		//para cargar el componete yiibooster
+		'yiibooster' => array(
+		'class' => 'ext.yiibooster.components.Booster',
+		'responsiveCss' => true,),
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
 		),
-
+		//------------------------------------
 		// uncomment the following to enable URLs in path-format
 		/*
 		'urlManager'=>array(

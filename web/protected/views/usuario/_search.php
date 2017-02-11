@@ -1,95 +1,44 @@
-<?php
-/* @var $this UsuarioController */
-/* @var $model Usuario */
-/* @var $form CActiveForm */
-?>
-
-<div class="wide form">
-
-<?php $form=$this->beginWidget('CActiveForm', array(
+<?php $form=$this->beginWidget('booster.widgets.TbActiveForm',array(
 	'action'=>Yii::app()->createUrl($this->route),
 	'method'=>'get',
 )); ?>
 
-	<div class="row">
-		<?php echo $form->label($model,'id_usuario'); ?>
-		<?php echo $form->textField($model,'id_usuario'); ?>
-	</div>
+		<?php echo $form->textFieldGroup($model,'id_usuario',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5')))); ?>
 
-	<div class="row">
-		<?php echo $form->label($model,'usuario'); ?>
-		<?php echo $form->textField($model,'usuario',array('size'=>30,'maxlength'=>30)); ?>
-	</div>
+		<?php echo $form->textFieldGroup($model,'usuario',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5','maxlength'=>30)))); ?>
 
-	<div class="row">
-		<?php echo $form->label($model,'correo'); ?>
-		<?php echo $form->textField($model,'correo',array('size'=>60,'maxlength'=>80)); ?>
-	</div>
+		<?php echo $form->textFieldGroup($model,'correo',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5','maxlength'=>80)))); ?>
 
-	<div class="row">
-		<?php echo $form->label($model,'nombre_completo'); ?>
-		<?php echo $form->textField($model,'nombre_completo',array('size'=>60,'maxlength'=>100)); ?>
-	</div>
+		<?php echo $form->textFieldGroup($model,'nombre_completo',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5','maxlength'=>100)))); ?>
 
-	<div class="row">
-		<?php echo $form->label($model,'fk_idioma'); ?>
-		<?php echo $form->textField($model,'fk_idioma'); ?>
-	</div>
+			<?php echo $form->textFieldGroup($model,'fk_idioma',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5')))); ?>
 
-	<div class="row">
-		<?php echo $form->label($model,'fk_pais'); ?>
-		<?php echo $form->textField($model,'fk_pais'); ?>
-	</div>
+		<?php echo $form->textFieldGroup($model,'fk_pais',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5')))); ?>
 
-	<div class="row">
-		<?php echo $form->label($model,'fk_pregunta_secreta'); ?>
-		<?php echo $form->textField($model,'fk_pregunta_secreta'); ?>
-	</div>
+		<?php echo $form->textFieldGroup($model,'fk_pregunta_secreta',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5')))); ?>
 
-	<div class="row">
-		<?php echo $form->label($model,'respuesta_secreta'); ?>
-		<?php echo $form->textField($model,'respuesta_secreta',array('size'=>60,'maxlength'=>256)); ?>
-	</div>
+		<?php echo $form->textFieldGroup($model,'respuesta_secreta',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5','maxlength'=>256)))); ?>
 
-	<div class="row">
-		<?php echo $form->label($model,'telefono'); ?>
-		<?php echo $form->textField($model,'telefono',array('size'=>15,'maxlength'=>15)); ?>
-	</div>
+		<?php echo $form->textFieldGroup($model,'telefono',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5','maxlength'=>15)))); ?>
 
-	<div class="row">
-		<?php echo $form->label($model,'foto_perfil'); ?>
-		<?php echo $form->textField($model,'foto_perfil',array('size'=>60,'maxlength'=>100)); ?>
-	</div>
+		<?php echo $form->textFieldGroup($model,'foto_perfil',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5','maxlength'=>100)))); ?>
 
-	<div class="row">
-		<?php echo $form->label($model,'imagen_fondo'); ?>
-		<?php echo $form->textField($model,'imagen_fondo',array('size'=>60,'maxlength'=>100)); ?>
-	</div>
+		<?php echo $form->textFieldGroup($model,'imagen_fondo',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5','maxlength'=>100)))); ?>
 
-	<div class="row">
-		<?php echo $form->label($model,'activo'); ?>
-		<?php echo $form->checkBox($model,'activo'); ?>
-	</div>
+		<?php echo $form->checkBoxGroup($model,'activo'); ?>
 
-	<div class="row">
-		<?php echo $form->label($model,'fecha_creacion'); ?>
-		<?php echo $form->textField($model,'fecha_creacion'); ?>
-	</div>
+		<?php echo $form->textFieldGroup($model,'fecha_creacion',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5')))); ?>
 
-	<div class="row">
-		<?php echo $form->label($model,'sitioweb'); ?>
-		<?php echo $form->textField($model,'sitioweb',array('size'=>60,'maxlength'=>60)); ?>
-	</div>
+		<?php echo $form->textFieldGroup($model,'sitioweb',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5','maxlength'=>60)))); ?>
 
-	<div class="row">
-		<?php echo $form->label($model,'biografia'); ?>
-		<?php echo $form->textField($model,'biografia',array('size'=>60,'maxlength'=>200)); ?>
-	</div>
+		<?php echo $form->textFieldGroup($model,'biografia',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5','maxlength'=>200)))); ?>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton('Search'); ?>
+	<div class="form-actions">
+		<?php $this->widget('booster.widgets.TbButton', array(
+			'buttonType' => 'submit',
+			'context'=>'primary',
+			'label'=>'Search',
+		)); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
-
-</div><!-- search-form -->
