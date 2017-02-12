@@ -68,9 +68,14 @@ $model=new Usuario;
 
 if(isset($_POST['Usuario']))
 {
-$model->attributes=$_POST['Usuario'];
-if($model->save())
-$this->redirect(array('view','id'=>$model->id_usuario));
+	$model->attributes=$_POST['Usuario'];
+	$model->foto_perfil=CUploadedFile::getInstance($model,'foto_perfil');
+	if($model->save()){
+		if(!empty($model->foto_perfil)){
+			$model->foto_perfil->saveAs(Yii::getPathOfAlias('webroot')."/images/".$model->foto_perfil); 
+		}
+		$this->redirect(array('view','id'=>$model->id_usuario));
+	}
 }
 
 $this->render('create',array(
@@ -92,14 +97,17 @@ $model=$this->loadModel($id);
 
 if(isset($_POST['Usuario']))
 {
-$model->attributes=$_POST['Usuario'];
-if($model->save())
-$this->redirect(array('view','id'=>$model->id_usuario));
-}
+	$model->attributes=$_POST['Usuario'];
+	$model->foto_perfil=CUploadedFile::getInstance($model,'foto_perfil');
+	if($model->save())
+		if(!empty($model->foto_perfil)){$model->foto_perfil->saveAs(Yii::getPathOfAlias('webroot')."/images/".$model->foto_perfil);
+		}
+		$this->redirect(array('view','id'=>$model->id_usuario));
+	}
 
-$this->render('update',array(
-'model'=>$model,
-));
+	$this->render('update',array(
+	'model'=>$model,
+	));
 }
 
 /**

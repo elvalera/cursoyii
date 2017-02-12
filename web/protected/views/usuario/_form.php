@@ -1,9 +1,10 @@
 <?php $form=$this->beginWidget('booster.widgets.TbActiveForm',array(
 	'id'=>'usuario-form',
 	'enableAjaxValidation'=>false,
+	'htmlOptions' => array('enctype' => 'multipart/form-data'),
 )); ?>
 
-<p class="help-block">Fields with <span class="required">*</span> are required.</p>
+<p class="help-block">Los campos con <span class="required">*</span> son requeridos.</p>
 
 <?php echo $form->errorSummary($model); ?>
 
@@ -35,24 +36,24 @@ array('class' => 'col-sm-5',),
 <?php echo $form->dropDownListGroup( $model,'fk_pregunta_secreta',
 array( 'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
 'widgetOptions' => array(
-'data' => CHtml::listData(Idioma::model()->findAll(), 'id_pregunta_secreta', 'pregunta_secreta'),
+'data' => CHtml::listData(PreguntaSecreta::model()->findAll(), 'id_pregunta_secreta', 'pregunta_secreta'),
 'htmlOptions' => array('empty'=> 'Seleccione la Pregunta secreta', 
 ),
 ) ) ); ?>
-
-	<?php echo $form->textFieldGroup($model,'fk_pregunta_secreta',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5')))); ?>
 
 	<?php echo $form->textFieldGroup($model,'respuesta_secreta',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5','maxlength'=>256)))); ?>
 
 	<?php echo $form->textFieldGroup($model,'telefono',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5','maxlength'=>15)))); ?>
 
-	<?php echo $form->textFieldGroup($model,'foto_perfil',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5','maxlength'=>100)))); ?>
+<?php echo $form->fileFieldGroup($model,'foto_perfil',
+	array('wrapperHtmlOptions' => array('class' => 'col-sm-5',), )); 
+//maxlen100?>
 
 	<?php echo $form->textFieldGroup($model,'imagen_fondo',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5','maxlength'=>100)))); ?>
 
 	<?php echo $form->checkBoxGroup($model,'activo'); ?>
 
-	<?php echo $form->textFieldGroup($model,'fecha_creacion',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5')))); ?>
+	
 
 	<?php echo $form->textFieldGroup($model,'sitioweb',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5','maxlength'=>60)))); ?>
 

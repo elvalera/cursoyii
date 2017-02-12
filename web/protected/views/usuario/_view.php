@@ -20,7 +20,7 @@
 	<?php echo CHtml::encode($data->password); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('fk_idioma')); ?>:</b>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('idioma')); ?>:</b>
 	<?php echo CHtml::encode($data->fk_idioma); ?>
 	<br />
 

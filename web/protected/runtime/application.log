@@ -770,3 +770,50 @@ REQUEST_URI=/cursos/cursos_de_yii/cursoyii/web/index.php?r=usuario/create
 in /var/www/cursos/cursos_de_yii/cursoyii/web/protected/views/usuario/_form.php (21)
 in /var/www/cursos/cursos_de_yii/cursoyii/web/protected/views/usuario/create.php (15)
 in /var/www/cursos/cursos_de_yii/cursoyii/web/protected/controllers/UsuarioController.php (78)
+2017/02/12 10:20:53 [error] [system.db.CDbCommand] CDbCommand::execute() falló: SQLSTATE[22007]: Invalid datetime format: 7 ERROR:  la sintaxis de entrada no es válida para tipo timestamp: «»
+LINE 1: ...'elvis', 1, 1, NULL, 'asd', '233123123', '', 't', '', '', ''...
+                                                             ^. La sentencia SQL ejecutada fue: INSERT INTO "usuario" ("foto_perfil", "usuario", "correo", "nombre_completo", "password", "fk_idioma", "fk_pais", "fk_pregunta_secreta", "respuesta_secreta", "telefono", "imagen_fondo", "activo", "fecha_creacion", "sitioweb", "biografia") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14).
+in /var/www/cursos/cursos_de_yii/cursoyii/web/protected/controllers/UsuarioController.php (73)
+in /var/www/cursos/cursos_de_yii/cursoyii/web/index.php (13)
+2017/02/12 10:20:53 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand falló al ejecutar la sentencia SQL: SQLSTATE[22007]: Invalid datetime format: 7 ERROR:  la sintaxis de entrada no es válida para tipo timestamp: «»
+LINE 1: ...'elvis', 1, 1, NULL, 'asd', '233123123', '', 't', '', '', ''...
+                                                             ^. The SQL statement executed was: INSERT INTO "usuario" ("foto_perfil", "usuario", "correo", "nombre_completo", "password", "fk_idioma", "fk_pais", "fk_pregunta_secreta", "respuesta_secreta", "telefono", "imagen_fondo", "activo", "fecha_creacion", "sitioweb", "biografia") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14)' in /var/www/cursos/cursos_de_yii/cursoyii/yii/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /var/www/cursos/cursos_de_yii/cursoyii/yii/framework/db/ar/CActiveRecord.php(1080): CDbCommand->execute()
+#1 /var/www/cursos/cursos_de_yii/cursoyii/yii/framework/db/ar/CActiveRecord.php(809): CActiveRecord->insert(NULL)
+#2 /var/www/cursos/cursos_de_yii/cursoyii/web/protected/controllers/UsuarioController.php(73): CActiveRecord->save()
+#3 /var/www/cursos/cursos_de_yii/cursoyii/yii/framework/web/actions/CInlineAction.php(49): UsuarioController->actionCreate()
+#4 /var/www/cursos/cursos_de_yii/cursoyii/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /var/www/cursos/cursos_de_yii/cursoyii/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /var/www/cursos/cursos_de_yii/cursoyii/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /var/www/cursos/cursos_de_yii/cursoyii/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /var/www/cursos/cursos_de_yii/cursoyii/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /var/www/cursos/cursos_de_yii/cursoyii/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /var/www/cursos/cursos_de_yii/cursoyii/yii/framework/web/CController.php(291): CFilterChain->run()
+#11 /var/www/cursos/cursos_de_yii/cursoyii/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /var/www/cursos/cursos_de_yii/cursoyii/yii/framework/web/CWebApplication.php(282): CController->run('create')
+#13 /var/www/cursos/cursos_de_yii/cursoyii/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('usuario/create')
+#14 /var/www/cursos/cursos_de_yii/cursoyii/yii/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#15 /var/www/cursos/cursos_de_yii/cursoyii/web/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/cursos/cursos_de_yii/cursoyii/web/index.php?r=usuario/create
+HTTP_REFERER=http://local.dev/cursos/cursos_de_yii/cursoyii/web/index.php?r=usuario/create
+---
+2017/02/12 12:08:18 [error] [php] move_uploaded_file(/var/www/cursos/cursos_de_yii/cursoyii/web/images/Captura de pantalla de 2017-02-11 12:47:54.png): failed to open stream: Permission denied (/var/www/cursos/cursos_de_yii/cursoyii/yii/framework/web/CUploadedFile.php:201)
+Stack trace:
+#0 /var/www/cursos/cursos_de_yii/cursoyii/yii/framework/web/actions/CInlineAction.php(49): UsuarioController->actionCreate()
+#1 /var/www/cursos/cursos_de_yii/cursoyii/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /var/www/cursos/cursos_de_yii/cursoyii/yii/framework/web/filters/CFilterChain.php(133): UsuarioController->runAction()
+#3 /var/www/cursos/cursos_de_yii/cursoyii/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /var/www/cursos/cursos_de_yii/cursoyii/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /var/www/cursos/cursos_de_yii/cursoyii/yii/framework/web/filters/CInlineFilter.php(58): UsuarioController->filterAccessControl()
+#6 /var/www/cursos/cursos_de_yii/cursoyii/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /var/www/cursos/cursos_de_yii/cursoyii/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /var/www/cursos/cursos_de_yii/cursoyii/yii/framework/web/CController.php(265): UsuarioController->runActionWithFilters()
+#9 /var/www/cursos/cursos_de_yii/cursoyii/yii/framework/web/CWebApplication.php(282): UsuarioController->run()
+#10 /var/www/cursos/cursos_de_yii/cursoyii/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /var/www/cursos/cursos_de_yii/cursoyii/yii/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#12 /var/www/cursos/cursos_de_yii/cursoyii/web/index.php(13): CWebApplication->run()
+REQUEST_URI=/cursos/cursos_de_yii/cursoyii/web/index.php?r=usuario/create
+in /var/www/cursos/cursos_de_yii/cursoyii/web/protected/controllers/UsuarioController.php (75)
+in /var/www/cursos/cursos_de_yii/cursoyii/web/index.php (13)

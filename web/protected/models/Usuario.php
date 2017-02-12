@@ -59,6 +59,8 @@ class Usuario extends CActiveRecord
 			array('sitioweb', 'length', 'max'=>60),
 			array('biografia', 'length', 'max'=>200),
 			array('activo, fecha_creacion', 'safe'),
+			array('foto_perfil', 'length', 'max' => 100, 'tooLong' => '{attribute} el nombre del archivo es muy largo (max {max} caracteres).', 'on' => 'insert,upload'),
+			array('foto_perfil', 'file', 'types' => 'jpg,jpeg,gif,png', 'allowEmpty'=>true, 'maxSize' => 1024 * 1024 * 2, 'tooLarge' => 'La foto debe ser menor a 2MB !!!', 'on' => 'insert, upload'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id_usuario, usuario, correo, nombre_completo, password, fk_idioma, fk_pais, fk_pregunta_secreta, respuesta_secreta, telefono, foto_perfil, imagen_fondo, activo, fecha_creacion, sitioweb, biografia', 'safe', 'on'=>'search'),
