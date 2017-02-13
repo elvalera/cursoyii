@@ -33,6 +33,8 @@
  */
 class Usuario extends CActiveRecord
 {
+	public $verifyCode;//propiedad captcha
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -64,6 +66,8 @@ class Usuario extends CActiveRecord
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id_usuario, usuario, correo, nombre_completo, password, fk_idioma, fk_pais, fk_pregunta_secreta, respuesta_secreta, telefono, foto_perfil, imagen_fondo, activo, fecha_creacion, sitioweb, biografia', 'safe', 'on'=>'search'),
+			array('verifyCode', 'captcha', 'allowEmpty'=>!CCaptcha::checkRequirements()),//
+
 		);
 	}
 
@@ -108,6 +112,8 @@ class Usuario extends CActiveRecord
 			'fecha_creacion' => 'Fecha Creacion',
 			'sitioweb' => 'Sitioweb',
 			'biografia' => 'Biografia',
+			'verifyCode'=>'Código de Verificación',//captcha
+
 		);
 	}
 

@@ -43,14 +43,37 @@ return false;
 'dataProvider'=>$model->search(),
 'filter'=>$model,
 'columns'=>array(
-		'id_usuario',
 		'usuario',
 		'correo',
 		'nombre_completo',
-		'password',
-		'fk_idioma',
+		'fk_idioma' => array(
+			'name' => 'fk_idioma',
+			'value' =>'@$data->fk_idioma->idioma',//el @ se utiliza para que acepte registros donde no se encuentra definida la llave foranea de un registro
+			'filter' => CHtml::listData(Idioma::model()->findAll(), 'id_idioma', 'idioma'),
+		),
+		'fk_pais' => array(
+			'name' => 'fk_pais',
+			'value' =>'@$data->fkPais->pais',//el @ se utiliza para que acepte registros donde no se encuentra definida la llave foranea de un registro
+			'filter' => CHtml::listData(Pais::model()->findAll(), 'id_pais', 'pais'),
+		),
+		'foto_perfil'=> array(
+			'type'=>'html',
+			'header'=>'Foto',
+			'name'=>'foto_perfil',
+			'value'=>'CHtml::image(Yii::app()->baseUrl."/images/".$data->foto_perfil,"$data->foto_perfil",array("height"=>"100", "width"=>"100") )',
+			'filter' =>'',
+		),
+		'fecha_creacion' => array(
+			'header'=>'Registrado en',
+			'name'=>'fecha_creacion',
+			'value' => 'date("d/m/Y", strtotime($data->fecha_creacion))' ,
+			'htmlOptions'=>array('width'=>'120px', 'style' => 'text-align: center;'),
+		),
+
+
 		/*
-		'fk_pais',
+		'id_usuario',
+		'password',
 		'fk_pregunta_secreta',
 		'respuesta_secreta',
 		'telefono',
@@ -61,8 +84,45 @@ return false;
 		'sitioweb',
 		'biografia',
 		*/
-array(
+
+//botones anteriores
+/*array(
 'class'=>'booster.widgets.TbButtonColumn',
 ),
+*/
+array(
+	'header'=>'Acción',
+	'class'=>'booster.widgets.TbButtonColumn',
+	'htmlOptions' => array('width' => '85', 'style' => 'text-align: center;color: blue;'),
+	'template' => '{ver} {modificar} {eliminar} {pdf} {excel}',
+	'buttons' => array(
+	'ver' => array(
+	'label' => 'Ver',
+	'icon' => 'eye-open',
+	'url' => 'Yii::app()->createUrl("usuario/view/", array("id"=>$data->id_usuario))',),
+	'modificar' => array(
+		'label' => 'Modificar',
+		'icon' => 'glyphicon glyphicon-pencil',
+		'url' => 'Yii::app()->createUrl("usuario/update/", array("id"=>$data->id_usuario)
+	)',
+	//'visible' => '$data->estatus == TRUE',
+	),
+	'eliminar' => array(
+		'label' => 'Modificar',
+		'icon' => 'glyphicon glyphicon-delete',
+		'url' => 'Yii::app()->createUrl("usuario/delete/", array("id"=>$data->id_usuario))', 
+	),
+	'pdf' => array(
+		'label' => 'Generar PDF',
+		'icon' => 'glyphicon glyphicon-floppy-save',
+		'url' => 'Yii::app()->createUrl("usuario/pdf/", array("id"=>$data->id_usuario))', ),
+	'excel' => array(
+		'label' => 'Generar Excel',
+		'icon' => 'glyphicon glyphicon-list-alt',
+		'url' => 'Yii::app()->createUrl("usuario/excel/", array("id"=>$data->id_usuario))',
+		),
+	)//fin buttons
+),
+
 ),
 )); ?>

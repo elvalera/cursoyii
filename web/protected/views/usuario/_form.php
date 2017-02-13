@@ -59,6 +59,23 @@ array( 'wrapperHtmlOptions' => array('class' => 'col-sm-5',),
 
 	<?php echo $form->textFieldGroup($model,'biografia',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5','maxlength'=>200)))); ?>
 
+<br/>
+<div class="captcha">
+<?php if(CCaptcha::checkRequirements()): ?>
+<div class="row">
+<?php echo $form->labelEx($model,'verifyCode'); ?>
+<div>
+<?php $this->widget('CCaptcha'); ?>
+<?php echo $form->textField($model,'verifyCode'); ?>
+</div>
+<div class="hint">Por favor, introduzca las letras tal como se muestran en la imagen de arriba.
+<br/>Las letras no distinguen entre mayúsculas y minúsculas.
+</div>
+<?php echo $form->error($model,'verifyCode'); ?>
+</div>
+<?php endif; ?>
+
+
 <div class="form-actions">
 	<?php $this->widget('booster.widgets.TbButton', array(
 			'buttonType'=>'submit',
